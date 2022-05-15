@@ -15,6 +15,10 @@ local.properties
 .loadpath
 .recommenders
 
+logs/**
+.mvn/**
+.idea/**
+
 # External tool builders
 .externalToolBuilders/
 
