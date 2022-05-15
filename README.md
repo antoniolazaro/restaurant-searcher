@@ -1,4 +1,4 @@
-## Find the best-matched restaurants (Requirements)
+## Find the best-matched restaurants 
 
 ## System requirements:
 - JDK 17
