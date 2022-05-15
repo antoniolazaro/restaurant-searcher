@@ -3,9 +3,8 @@ package com.restaurant.searcher.application.service.impl;
 import com.restaurant.searcher.application.service.dataloader.RestaurantDataLoaderService;
 import com.restaurant.searcher.application.service.restaurant.RestaurantSearchValidatorService;
 import com.restaurant.searcher.application.service.restaurant.impl.RestaurantServiceImpl;
-import com.restaurant.searcher.domain.exceptions.badrequest.InvalidCustomerRatingException;
 import com.restaurant.searcher.domain.exceptions.badrequest.InvalidTextException;
-import com.restaurant.searcher.domain.exceptions.badrequest.PositiveNumberException;
+import com.restaurant.searcher.domain.exceptions.badrequest.OutsideIntervalException;
 import com.restaurant.searcher.domain.exceptions.badrequest.RequiredParameterException;
 import com.restaurant.searcher.domain.exceptions.internalserver.DataFileErrorException;
 import com.restaurant.searcher.domain.model.vo.RestaurantSearchVO;
@@ -50,9 +49,9 @@ public class RestaurantServiceImplTest {
     void testValidationFailedWithInvalidCustomerRatingException() {
 
         var restaurantSearch = RestaurantSearchVO.builder().build();
-        doThrow(InvalidCustomerRatingException.class).when(restaurantSearchValidatorService).validateRestaurantSearch(eq(restaurantSearch));
+        doThrow(OutsideIntervalException.class).when(restaurantSearchValidatorService).validateRestaurantSearch(eq(restaurantSearch));
 
-        Assertions.assertThrows(InvalidCustomerRatingException.class,
+        Assertions.assertThrows(OutsideIntervalException.class,
                 () -> restaurantService.search(restaurantSearch),
                 "Is valid");
     }
@@ -61,9 +60,9 @@ public class RestaurantServiceImplTest {
     void testValidationFailedWithPositiveNumberException() {
 
         var restaurantSearch = RestaurantSearchVO.builder().build();
-        doThrow(PositiveNumberException.class).when(restaurantSearchValidatorService).validateRestaurantSearch(eq(restaurantSearch));
+        doThrow(OutsideIntervalException.class).when(restaurantSearchValidatorService).validateRestaurantSearch(eq(restaurantSearch));
 
-        Assertions.assertThrows(PositiveNumberException.class,
+        Assertions.assertThrows(OutsideIntervalException.class,
                 () -> restaurantService.search(restaurantSearch),
                 "Is valid");
     }
