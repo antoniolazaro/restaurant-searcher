@@ -36,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Execution(ExecutionMode.SAME_THREAD)
 public class RestaurantControllerTest {
 
-    private static final String URI = "/restaurant";
+    private static final String URI = "/v1/restaurants";
 
     @Autowired
     private ObjectMapper objectMapper;
