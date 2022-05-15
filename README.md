@@ -27,7 +27,7 @@ You have data about local restaurants located near your company, which you can f
 ## Used components
 - Spring Boot
 - Spring Boot Cache
-- Caffeine - Implementation of cache mecanism
+- Caffeine - Implementation of cache mechanism
 - jobrunr - Job Executor to load class
 - Lombok
 
@@ -39,7 +39,7 @@ It has business logic and what the application should do.
 
 ### com.restaurant.searcher.domain
 
-It has models, constants, exceptions to represent de domain of application
+It has models, constants, exceptions to represent the domain of application
 
 ### com.restaurant.searcher.infrastructure
 
@@ -47,7 +47,7 @@ It has code to support application working, such as config information.
 
 ### com.restaurant.searcher.interfaces
 
-It provide external interfaces from application. Rest and command line in this case.
+It provides external interfaces from application. Rest and command line in this case.
 
 ### data from resources
 - cuisines.csv - Data with cuisines information
@@ -91,7 +91,7 @@ rest tool to test the service
 
 ![](docs/img/postman-evidence.png "Load data on startup image")
 
-## Usefull URLs
+## Useful URLs
 
 - Swagger page: http://localhost:8080/docs
 - Actuator page: http://localhost:8080/actuator
@@ -100,9 +100,9 @@ rest tool to test the service
 
 ## Logging
 
-- If you would like to change level log to debug, you should change this propertie on resource/application.propertie file
+- If you would like to change level log to debug, you should change this property on resource/application.properties file
 logging.level.com.restaurant.searcher=DEBUG
-- You should use this config to production mode outside from a debug situation:
+- You should use this config to production mode outside of a debug situation:
 logging.level.com.restaurant.searcher=INFO
 
 ## How application works
