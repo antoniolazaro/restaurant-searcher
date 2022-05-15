@@ -1,10 +1,10 @@
 package com.restaurant.searcher.application.service.restaurant.impl;
 
 import com.restaurant.searcher.application.service.restaurant.RestaurantSearchValidatorService;
-import com.restaurant.searcher.domain.exception.badrequest.InvalidCustomerRatingException;
-import com.restaurant.searcher.domain.exception.badrequest.InvalidTextException;
-import com.restaurant.searcher.domain.exception.badrequest.PositiveNumberException;
-import com.restaurant.searcher.domain.exception.badrequest.RequiredParameterException;
+import com.restaurant.searcher.domain.exceptions.badrequest.InvalidCustomerRatingException;
+import com.restaurant.searcher.domain.exceptions.badrequest.InvalidTextException;
+import com.restaurant.searcher.domain.exceptions.badrequest.PositiveNumberException;
+import com.restaurant.searcher.domain.exceptions.badrequest.RequiredParameterException;
 import com.restaurant.searcher.domain.model.vo.RestaurantSearchVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

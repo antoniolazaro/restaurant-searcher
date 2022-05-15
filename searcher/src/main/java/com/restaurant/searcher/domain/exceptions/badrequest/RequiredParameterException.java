@@ -1,4 +1,4 @@
-package com.restaurant.searcher.domain.exception.badrequest;
+package com.restaurant.searcher.domain.exceptions.badrequest;
 
 public final class RequiredParameterException extends AbstractBadRequestException {
 

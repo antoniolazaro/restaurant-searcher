@@ -1,4 +1,4 @@
-package com.restaurant.searcher.domain.exception.badrequest;
+package com.restaurant.searcher.domain.exceptions.badrequest;
 
 public abstract class AbstractBadRequestException extends RuntimeException{
 

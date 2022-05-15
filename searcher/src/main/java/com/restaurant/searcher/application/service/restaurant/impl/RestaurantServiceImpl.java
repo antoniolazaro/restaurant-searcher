@@ -23,9 +23,13 @@ public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantDataLoaderService restaurantDataLoaderService;
     private final RestaurantSearchValidatorService restaurantSearchValidatorService;
     public List<RestaurantVO> search(RestaurantSearchVO restaurantSearch){
+        log.debug("Validate data {} ", restaurantSearch);
         restaurantSearchValidatorService.validateRestaurantSearch(restaurantSearch);
+        log.debug("data validated {} ", restaurantSearch);
         var restaurants = restaurantDataLoaderService.loadData();
+        log.debug("restaurants loaded {} ", restaurants);
         if(!restaurants.isEmpty()){
+            log.debug("restaurants has data {} ", restaurants);
             var predicate = RestaurantPredicateUtil.buildPredicateFilter(restaurantSearch);
             return restaurants
                     .stream()

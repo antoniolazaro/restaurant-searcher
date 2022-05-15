@@ -4,7 +4,7 @@ import com.restaurant.searcher.application.service.dataloader.CuisineDataLoaderS
 import com.restaurant.searcher.application.service.dataloader.RestaurantDataLoaderService;
 import com.restaurant.searcher.application.util.ResourceUtil;
 import com.restaurant.searcher.domain.constants.Constants;
-import com.restaurant.searcher.domain.exception.internalserver.DataFileErrorException;
+import com.restaurant.searcher.domain.exceptions.internalserver.DataFileErrorException;
 import com.restaurant.searcher.domain.model.vo.RestaurantVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,23 +24,31 @@ public class RestaurantDataLoaderServiceImpl implements RestaurantDataLoaderServ
     @Cacheable(cacheNames = Constants.CACHE_KEY_RESTAURANTS)
     public List<RestaurantVO> loadData() {
 
+        log.debug("Loading cuisines data");
         var cuisines = cuisineDataLoaderService.loadData();
+        log.debug("cuisines data loaded");
         var restaurantMap = new HashMap<String, RestaurantVO>();
         try {
+            log.debug("Loading restaurants data");
             var streamRestaurantsCsv = ResourceUtil.loadStreamFromFile(Constants.PATH_DATA_RESTAURANTS);
+            log.debug("restaurants data loaded");
             streamRestaurantsCsv.forEach(line -> {
                 if (!line.startsWith("name")) {
+                    log.debug("processing line {} ", line);
                     var data = line.split(Constants.CSV_SEPARATOR);
+                    log.debug("processing data {} ", data);
                     var name = data[0];
-                    restaurantMap.put(name, RestaurantVO
+                    var restaurant = RestaurantVO
                             .builder()
                             .name(name)
                             .customerRating(Integer.valueOf(data[1]))
                             .distance(Integer.valueOf(data[2]))
                             .price(Integer.valueOf(data[3]))
                             .cuisine(cuisines.get(Integer.valueOf(data[4])))
-                            .build()
-                    );
+                            .build();
+                    log.debug("saving restaurant {} ", restaurant);
+                    restaurantMap.put(name, restaurant);
+                    log.debug("saved restaurant {} ", restaurant);
                 }
             });
         }

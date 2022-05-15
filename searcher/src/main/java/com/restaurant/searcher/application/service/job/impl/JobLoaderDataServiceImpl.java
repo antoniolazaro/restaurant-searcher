@@ -2,6 +2,7 @@ package com.restaurant.searcher.application.service.job.impl;
 
 import com.restaurant.searcher.application.service.dataloader.RestaurantDataLoaderService;
 import com.restaurant.searcher.application.service.job.JobLoaderDataService;
+import com.restaurant.searcher.domain.exceptions.internalserver.DataFileErrorException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jobrunr.jobs.annotations.Job;
@@ -16,12 +17,14 @@ public class JobLoaderDataServiceImpl implements JobLoaderDataService {
     @Override
     @Job(name = "Job to Load Restaurants from resource")
     public void loadRestaurantsFromResource() {
-        log.info("Start loadRestaurantsFromResource");
+        log.debug("Start loadRestaurantsFromResource");
         try {
             restaurantDataLoaderService.loadData();
-        } catch (Exception ex) {
+            log.debug("Data loaded");
+        } catch (DataFileErrorException ex) {
             log.error("Error {}", ex);
+            throw ex;
         }
-        log.info("Finished loadRestaurantsFromResource");
+        log.debug("Finished loadRestaurantsFromResource");
     }
 }

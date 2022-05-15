@@ -1,10 +1,10 @@
 package com.restaurant.searcher.application.service.impl;
 
 import com.restaurant.searcher.application.service.restaurant.impl.RestaurantSearchValidatorServiceImpl;
-import com.restaurant.searcher.domain.exception.badrequest.InvalidCustomerRatingException;
-import com.restaurant.searcher.domain.exception.badrequest.InvalidTextException;
-import com.restaurant.searcher.domain.exception.badrequest.PositiveNumberException;
-import com.restaurant.searcher.domain.exception.badrequest.RequiredParameterException;
+import com.restaurant.searcher.domain.exceptions.badrequest.InvalidCustomerRatingException;
+import com.restaurant.searcher.domain.exceptions.badrequest.InvalidTextException;
+import com.restaurant.searcher.domain.exceptions.badrequest.PositiveNumberException;
+import com.restaurant.searcher.domain.exceptions.badrequest.RequiredParameterException;
 import com.restaurant.searcher.domain.model.vo.RestaurantSearchVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -3,7 +3,7 @@ package com.restaurant.searcher.interfaces.rest;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.restaurant.searcher.application.service.restaurant.RestaurantService;
-import com.restaurant.searcher.domain.exception.badrequest.RequiredParameterException;
+import com.restaurant.searcher.domain.exceptions.badrequest.RequiredParameterException;
 import com.restaurant.searcher.domain.model.rest.response.RestaurantRestResponse;
 import com.restaurant.searcher.domain.model.transform.RestaurantTransform;
 import com.restaurant.searcher.domain.model.vo.RestaurantSearchVO;
@@ -27,7 +27,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.List;
 
-import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

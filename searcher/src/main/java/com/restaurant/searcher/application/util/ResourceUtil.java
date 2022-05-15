@@ -1,6 +1,6 @@
 package com.restaurant.searcher.application.util;
 
-import com.restaurant.searcher.domain.exception.internalserver.GenericServerErrorException;
+import com.restaurant.searcher.domain.exceptions.internalserver.GenericServerErrorException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ResourceUtils;
 

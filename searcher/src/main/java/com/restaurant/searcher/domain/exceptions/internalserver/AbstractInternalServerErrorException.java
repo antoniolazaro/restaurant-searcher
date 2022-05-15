@@ -1,4 +1,4 @@
-package com.restaurant.searcher.domain.exception.internalserver;
+package com.restaurant.searcher.domain.exceptions.internalserver;
 
 public abstract class AbstractInternalServerErrorException extends RuntimeException{
 

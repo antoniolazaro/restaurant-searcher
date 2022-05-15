@@ -3,7 +3,7 @@ package com.restaurant.searcher.application.service.dataloader.impl;
 import com.restaurant.searcher.application.service.dataloader.CuisineDataLoaderService;
 import com.restaurant.searcher.application.util.ResourceUtil;
 import com.restaurant.searcher.domain.constants.Constants;
-import com.restaurant.searcher.domain.exception.internalserver.DataFileErrorException;
+import com.restaurant.searcher.domain.exceptions.internalserver.DataFileErrorException;
 import com.restaurant.searcher.domain.model.vo.CuisineVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

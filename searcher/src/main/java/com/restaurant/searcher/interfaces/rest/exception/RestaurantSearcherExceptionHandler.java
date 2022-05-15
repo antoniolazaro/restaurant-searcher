@@ -1,7 +1,7 @@
 package com.restaurant.searcher.interfaces.rest.exception;
 
-import com.restaurant.searcher.domain.exception.badrequest.AbstractBadRequestException;
-import com.restaurant.searcher.domain.exception.internalserver.AbstractInternalServerErrorException;
+import com.restaurant.searcher.domain.exceptions.badrequest.AbstractBadRequestException;
+import com.restaurant.searcher.domain.exceptions.internalserver.AbstractInternalServerErrorException;
 import com.restaurant.searcher.domain.model.rest.response.ExceptionRestResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

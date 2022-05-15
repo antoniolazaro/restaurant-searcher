@@ -16,13 +16,13 @@ import java.util.List;
 @RestController
 @Slf4j
 @AllArgsConstructor
-@RequestMapping("/restaurant")
+@RequestMapping("/v1")
 public class RestaurantController {
 
     private final RestaurantService restaurantService;
     private final RestaurantTransform restaurantTransform;
 
-    @GetMapping
+    @GetMapping("/restaurants")
     public List<RestaurantRestResponse> searchRestaurant(@RequestParam(required = false) String restaurantName,
                                                          @RequestParam(required = false) Integer customerRating,
                                                          @RequestParam(required = false) Integer distance,
