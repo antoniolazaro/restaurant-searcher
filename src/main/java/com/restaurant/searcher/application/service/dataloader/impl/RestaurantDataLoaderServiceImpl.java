@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,8 +43,8 @@ public class RestaurantDataLoaderServiceImpl implements RestaurantDataLoaderServ
                             .builder()
                             .name(name)
                             .customerRating(Integer.valueOf(data[1]))
-                            .distance(Integer.valueOf(data[2]))
-                            .price(Integer.valueOf(data[3]))
+                            .distance(new BigDecimal(data[2]))
+                            .price(new BigDecimal(data[3]))
                             .cuisine(cuisines.get(Integer.valueOf(data[4])))
                             .build();
                     log.debug("saving restaurant {} ", restaurant);

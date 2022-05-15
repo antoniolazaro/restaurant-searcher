@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class RestaurantSearchVO {
     private String restaurantName;
     private Integer customerRating;
-    private Integer distance;
-    private Integer price;
+    private BigDecimal distance;
+    private BigDecimal price;
     private String cuisineName;
 }

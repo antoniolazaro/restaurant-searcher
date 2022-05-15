@@ -6,7 +6,7 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.stream.Stream;
+import java.util.List;
 
 @Slf4j
 public final class ResourceUtil {
@@ -14,10 +14,11 @@ public final class ResourceUtil {
     private ResourceUtil(){
     }
 
-    public static Stream<String> loadStreamFromFile(String path) {
+    public static List<String> loadStreamFromFile(String path) {
         try{
             var csvData = ResourceUtils.getFile(path);
-            return Files.lines(csvData.toPath());
+            var bufferedReader = Files.newBufferedReader(csvData.toPath());
+            return bufferedReader.lines().toList();
         }catch(IOException ex){
             log.error("Error ao processar arquivo {}",ex.getMessage());
             throw new GenericServerErrorException(ex.getMessage());

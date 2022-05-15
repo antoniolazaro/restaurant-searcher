@@ -26,8 +26,8 @@ public class RestaurantSearchValidatorServiceImpl implements RestaurantSearchVal
         var validResult =
         TextValidator.validate(restaurantSearch.getRestaurantName()) || 
         IntervalValidator.validate(restaurantSearch.getCustomerRating(), Constants.MIN_CUSTOMER_RATING, Constants.MAX_CUSTOMER_RATING) ||
-        IntervalValidator.validate(restaurantSearch.getDistance(), Constants.MIN_DISTANCE, Constants.MAX_DISTANCE) ||
-        IntervalValidator.validate(restaurantSearch.getPrice(), Constants.MIN_PRICE, Constants.MAX_PRICE) ||
+        IntervalValidator.validate(restaurantSearch.getDistance().intValue(), Constants.MIN_DISTANCE, Constants.MAX_DISTANCE) ||
+        IntervalValidator.validate(restaurantSearch.getPrice().intValue(), Constants.MIN_PRICE, Constants.MAX_PRICE) ||
         TextValidator.validate(restaurantSearch.getCuisineName());
 
         if(!validResult){
