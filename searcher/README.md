@@ -98,6 +98,12 @@ rest tool to test the service
 - Job monitor page: http://localhost:8000/dashboard/overview
 - Application: http://localhost:8080
 
+## Logging
+
+- If you would like to change level log to debug, you should change this propertie on resource/application.propertie file
+logging.level.com.restaurant.searcher=DEBUG
+- You should use this config to production mode outside from a debug situation:
+logging.level.com.restaurant.searcher=INFO
 
 ## How application works
 
