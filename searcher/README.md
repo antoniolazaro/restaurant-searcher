@@ -20,49 +20,95 @@ You have data about local restaurants located near your company, which you can f
         - Example: if the input is Customer Rating = 3 and Price = 15. Mcdonald’s is 4 stars with an average spend = $10, and it is 1 mile away. And KFC is 3 stars with an average spend = $8, and it is 1 mile away. Then we should consider Mcdonald’s as a better match than KFC. (They both matches the search criteria -> we compare distance -> we get a tie -> we then compare customer rating -> Mcdonald’s wins)
 5. The final submitted work should include a README file. No UI is required in this assessment, but you may implement one if you would like. **The steps to run and test your program should be clearly introduced in the README file.** If you have made any additional **Assumptions** besides what we have listed above while working on this assessment, please document them so that we can better understand your solution.
 
-## Project structure packages
-
-### com.restaurant.searcher.application
-
-### com.restaurant.searcher.domain
-
-### com.restaurant.searcher.infrastructure
-
-### com.restaurant.searcher.interfaces
-
-### resources
-- cuisines.csv - Data with cuisines information
-- restaurants.csv - Data with restaurants information
+## System requirements:
+- JDK 17
+- Maven >= 3.8.4
 
 ## Used components
 - Spring Boot
 - Spring Boot Cache
 - Caffeine - Implementation of cache mecanism
 - jobrunr - Job Executor to load class
+- Lombok
 
-## Postman
+## Project structure packages
 
-You can use the file restaurant-searcher.postman_collection.json from postman folder to import a postman project to use as 
-rest tool to test the service
+### com.restaurant.searcher.application
 
-## How application works
-On startup com.restaurant.searcher.interfaces.commandline.DataLoader start the process to load data on cache.
+It has business logic and what the application should do.
 
-## System requirements:
-- JDK 17
-- Maven >= 3.8.4
+### com.restaurant.searcher.domain
+
+It has models, constants, exceptions to represent de domain of application
+
+### com.restaurant.searcher.infrastructure
+
+It has code to support application working, such as config information.
+
+### com.restaurant.searcher.interfaces
+
+It provide external interfaces from application. Rest and command line in this case.
+
+### data from resources
+- cuisines.csv - Data with cuisines information
+- restaurants.csv - Data with restaurants information
 
 ## Commands to execute program
 
 - Build project: mvn clean install
 - Run project: mvn spring-boot:run
 
-## URL
+## How Test application after startup
+
+### Requirements
+
+It should be informed at least one of this request param:
+- restaurantName (It should have at least 2 letters)
+- customerRating (It should be an integer between 1 and 5)
+- distance (It should be an integer between 1 and 10)
+- price (It should be an integer between 10 and 50)
+- cuisineName (It should have at least 2 letters)
+
+
+### Curl sample
+
+curl --location --request GET 'http://localhost:8080/v1/restaurants?restaurantName=deli&customerRating=4&distance=3&price=15&cuisineName=Ch'
+
+#### Expected response
+``
+[{"name":"Deliciouszilla","customerRating":4,"distance":1,"price":15,"cuisineName":"Chinese"}]%
+``
+### Postman
+
+You can use the file docs/postman/restaurant-searcher.postman_collection.json from postman folder to import a postman project to use as
+rest tool to test the service
+
+#### Expected response
+
+``
+[{"name":"Deliciouszilla","customerRating":4,"distance":1,"price":15,"cuisineName":"Chinese"}]%
+``
+
+![](docs/img/postman-evidence.png "Load data on startup image")
+
+## Usefull URLs
 
 - Swagger page: http://localhost:8080/docs
 - Actuator page: http://localhost:8080/actuator
+- Job monitor page: http://localhost:8000/dashboard/overview
 - Application: http://localhost:8080
 
-## Curl sample
 
-curl --location --request GET 'http://localhost:8080/restaurant?restaurantName=deli&customerRating=4&distance=3&price=15&cuisineName=Ch'
+## How application works
+
+### Load data from CSV on startup of Application
+
+![](docs/img/load-csv-data-on-startup.png "Load data on startup image")
+
+## JobControlController HTTP Get "/load-data-job"
+
+![](docs/img/load-csv-data-from-endpoint.png "Load data from endpoint image")
+
+## RestaurantController HTTP Get "/load-data-job"
+
+![](docs/img/flow-restaurant-search.png "Search restaurant flow")
