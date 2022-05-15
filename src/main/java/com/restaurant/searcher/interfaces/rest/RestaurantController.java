@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -25,8 +26,8 @@ public class RestaurantController {
     @GetMapping("/restaurants")
     public List<RestaurantRestResponse> searchRestaurant(@RequestParam(required = false) String restaurantName,
                                                          @RequestParam(required = false) Integer customerRating,
-                                                         @RequestParam(required = false) Integer distance,
-                                                         @RequestParam(required = false) Integer price,
+                                                         @RequestParam(required = false) BigDecimal distance,
+                                                         @RequestParam(required = false) BigDecimal price,
                                                          @RequestParam(required = false) String cuisineName) {
         var restaurantSearch = RestaurantSearchVO
                 .builder()

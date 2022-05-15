@@ -52,14 +52,14 @@ public final class RestaurantPredicateUtil {
 
     private static Predicate<RestaurantVO> buildPredicateDistance(RestaurantSearchVO restaurantSearch) {
         if (Objects.nonNull(restaurantSearch.getDistance())) {
-            return (restaurantVO -> restaurantVO.getDistance() <= restaurantSearch.getDistance());
+            return (restaurantVO -> restaurantVO.getDistance().compareTo(restaurantSearch.getDistance()) <= -1);
         }
         return PREDICATE_BASE;
     }
 
     private static Predicate<RestaurantVO> buildPredicatePrice(RestaurantSearchVO restaurantSearch) {
         if (Objects.nonNull(restaurantSearch.getPrice())) {
-            return (restaurantVO -> restaurantVO.getPrice() <= restaurantSearch.getPrice());
+            return (restaurantVO -> restaurantVO.getPrice().compareTo(restaurantSearch.getPrice()) <= -1);
         }
         return PREDICATE_BASE;
     }
